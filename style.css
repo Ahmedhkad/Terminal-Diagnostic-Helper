@@ -1,8 +1,9 @@
 body{
     background-color: rgb(71, 71, 71);
 }
-.text-output{
+.buttons{
     display: flex;
+    justify-content: center;
 }
 
  .inputHolder {
@@ -11,6 +12,7 @@ body{
     width: -webkit-fill-available;
     border-radius: 25px;
     font-size: x-large;
+    
   }
 
 .btn{
@@ -20,6 +22,7 @@ body{
     margin: 10px;
     text-align: center;
     font-size: x-large;
+    cursor: pointer;
 }
 
 .device{
