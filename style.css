@@ -1,6 +1,12 @@
 body{
-    background-color: rgb(71, 71, 71);
+    /* background-color: rgb(71, 71, 71); */
+    background: linear-gradient(135deg, #7d7e7d 0%,#0e0e0e 100%)  ;
+    background: linear-gradient(135deg, #7d7e7d 0%,#0e0e0e 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+     
 }
+
 .buttons{
     display: flex;
     justify-content: center;
@@ -9,9 +15,13 @@ body{
  .inputHolder {
     padding: 10px;
     margin: 10px;
-    width: -webkit-fill-available;
+    /* width: -webkit-fill-available; */
+    width: 93%;
     border-radius: 25px;
-    font-size: x-large;
+    /* font-size: x-large; */
+    max-height: 60px;
+    height: 60px;
+    font-family: sans-serif;
     
   }
 
@@ -21,7 +31,7 @@ body{
     border-radius: 25px;
     margin: 10px;
     text-align: center;
-    font-size: x-large;
+    font-size: large;
     cursor: pointer;
 }
 
@@ -37,7 +47,7 @@ body{
     display: block;
     position: absolute;
     z-index: 1;
-    top: 777px;
-    left: 246px;
+    top: 470px;
+    left: 77px;
 }
  

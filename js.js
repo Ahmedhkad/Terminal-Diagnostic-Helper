@@ -1,4 +1,30 @@
-let details = {}
+let details = {
+    backcase : "Замена заднего корпуса",
+    keyboard: "Замена клавиатуры",
+    frontcase: "Замена переднего корпуса",
+    printerroller: "Замена ролика принтера",
+    printerchange: "Замена принтера",
+    printerclean: "Очистка принтера",
+    printercoverused: "Замена крышки принтера (б\y)",
+    printercovernew: "Замена крышка принтера (новая)",
+    screen: "Замена дисплея",
+    newdc: "Замена разъема зарядки (новый)",
+    magreader: "Замена картридера",
+    Tarakan: "Отказ. Залит тараканами",
+    water: "Отказ. попадание жидкости",
+    simreader: "Перепайка считывателя SIM",
+    cpu: "Замена нижней платы",
+    protection: "Перепайка тамперного модуля",
+    dcjack: "Замена разъема зарядки",
+    batteries: "Замена батареи",
+    buzzer: "Замена пищалка",
+    conactlessboard: "Замена платы ктлц",
+    key: "Очистка клавиатуры",
+    keyC: "Очистка бесконтактной платы"
+}
+
+let tempDetails = {}
+ 
 $(function () {
     $('.maparea').maphilight({
         fillColor: '008800'
@@ -11,41 +37,35 @@ $("#map area").click(function () {
     data.alwaysOn = !data.alwaysOn;
     // console.log(data);
     $(this).trigger('alwaysOn.maphilight');
-    const thisDetails = $(this).attr("details");
-    const alt = $(this).attr("alt");
-    // console.log(alt +" sssss");
-    // $('#titleInput').attr("value", alt);
+    const id = $(this).attr("id");
+    const gid = $(this).attr("gid");
+    // console.log(id +" is id");
 
     if (data.alwaysOn) {
-        details[alt] = thisDetails
-        //  $('#titleInput').val($('#titleInput').val() + " + " +alt);
+        tempDetails[gid]  = details[gid]  
     }
     else {
-        details[alt] = false
-        // $('#titleInput').val($('#titleInput').val() - " + " -alt);
+        tempDetails[gid]  = false
     }
-    // console.dir(details);
     checkDetails()
+    console.log(tempDetails); 
 });
 
-$("#Tarakan").click(function () {
-
-     
+$("#Tarakan").click(function () {   
     const dancers = document.querySelector('.dancers') ;
-
-    // const changedTitle = document.querySelector('#webTitle');
-    // changedTitle.setAttribute("fontsize", fontsize)
-
     dancers.classList.toggle("visible");
-    $('#titleInput').val('Отказ. попадания жидкости')
+    $('#titleInput').val(details.Tarakan)
+});
 
+$("#water").click(function () {   
+    $('#titleInput').val(details.water)
 });
 
 checkDetails = () => {
     let list = []
-    for (const key in details) {
-        if (Object.hasOwnProperty.call(details, key)) {
-            const element = details[key];
+    for (const key in tempDetails) {
+        if (Object.hasOwnProperty.call(tempDetails, key)) {
+            const element = tempDetails[key];
             if (element) {
                 // console.log(key + '  -  ' + element);
                 list.push(element)
@@ -57,13 +77,6 @@ checkDetails = () => {
     $('#titleInput').val(newList)
 }
 
-function copyText() {
-    console.log('clicked');
-    var copyText =  document.getElementById("titleInput");  
-    console.log();
-    copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
-
-  // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-}
+$('#copyText').on('click', () => {
+    navigator.clipboard.writeText($('#titleInput').val());
+  });

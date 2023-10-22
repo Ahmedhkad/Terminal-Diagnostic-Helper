@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pax S90</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/images/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <link rel="stylesheet" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="/images/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
@@ -27,124 +27,76 @@
 </head>
 
 <body>
+    
+
     <textarea id="titleInput" class="inputHolder" placeholder="Enter text here..." rows="" cols="" name="" form=""> </textarea>
 
-<!-- <input class="inputHolder" type='text' id="titleInput" placeholder="title here!"> -->
     <div class="buttons">
-        
-
-        <!-- <button onclick="copyText()" class="copy-btn" type="button">Copy</button> -->
-        <button onclick="copyText()" class="btn">Copy text</button>
+      
+        <button id="copyText" class="btn">Copy text</button>
         <button onClick="window.location.reload();" class="btn" >Refresh Page</button>
     </div>
 
     <div class="dancers">
-        <img src="./images/dance.gif" height="180px">
+        <img src="./images/dance.gif" height="80px">
     </div>
 
-    
-    
-
-    <img   src="./images/PAX-S90.png" usemap="#image-map" class="maparea">
+    <img   src="./images/PAX-S90-v0.2.png" usemap="#image-map" class="maparea">
 
     <map name="image-map" id="map">
-        <area details="Замена дисплей" id="Screen"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="Screen" title="Screen" href="#" coords="258,601,532,782" shape="rect"  >
-        <area details="чистка клавиатура" id="POWER"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="POWER" href="#" coords="300,881,25" shape="circle">
-        <area details="Замена Магнитный ридер" id="Magnet"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="Magnet" title="Magnet" href="#" coords="649,705,798,1108" shape="rect">
-        <area details="Замена SIM ридер" id="SIM" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="SIM" title="SIM" href="#" coords="269,1343,542,1610" shape="rect">
-        <area details="Замена NFC ридер" id="NFC" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="NFC" title="NFC" href="#" coords="90,694,87" shape="circle">
-        <area details="Замена крышка принтера (б/у)" id="PrinterCover"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="PrinterCover" title="PrinterCover" href="#"
-            coords="193,444,232,445,581,444,615,445,622,444,607,373,590,296,572,278,512,266,310,266,238,272,214,297,201,339,192,423"
-            shape="poly">
-        <area details="Замена роли принтера" id="PrinterRoller"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="PrinterRoller" title="PrinterRoller" href="#"
-            coords="241,215,253,210,267,210,269,215,550,219,554,214,569,210,583,210,583,196,571,197,569,202,556,200,550,196,270,192,268,198,253,197,244,194,240,182,229,181,228,217"
-            shape="poly">
-        <area details="Замена принтера" id="Printer"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="Printer" title="Printer" href="#"
-            coords="295,83,306,91,309,119,300,128,217,126,206,131,206,257,247,258,250,211,242,211,241,217,227,216,227,179,242,180,244,192,267,193,275,187,548,192,556,196,578,194,584,207,583,216,568,218,569,239,584,239,589,195,584,150,578,134,562,136,400,133,393,92,382,87,378,77,300,82"
-            shape="poly">
-        <area details="Замена акб" id="Tamper"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="Tamper" title="Tamper" href="#" coords="13,478,173,565" shape="rect">
-        <area details="Замена плата ктлц" id="btnF1"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="btnF1" href="#" coords="580,630,18" shape="circle">
-        <area details="Замена плата ктлц" id="btnF2"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="btnF2" href="#" coords="581,678,19" shape="circle">
-        <area details="Замена плата ктлц" id="btnF3"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="btnF3" href="#" coords="581,724,19" shape="circle">
-        <area details="Замена плата ктлц" id="btnF4"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="btnF4" href="#" coords="580,772,18" shape="circle">
-        <area details="чистка клавиатура" id="UP" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="btnF" title="UP" href="#" coords="408,886,26" shape="circle">
-        <area details="чистка клавиатура" id="Func"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="Func" href="#" coords="516,884,26" shape="circle">
-        <area details="чистка клавиатура" id="Menu"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="Menu" href="#" coords="517,944,26" shape="circle">
-        <area details="чистка клавиатура" id="Down"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="Down" href="#" coords="408,943,23" shape="circle">
-        <area details="чистка клавиатура" id="Alpha"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="btnF" title="Alpha" href="#" coords="298,945,26" shape="circle">
-        <area details="Замена клавиатура" id="1" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="1" href="#" coords="298,1012,24" shape="circle">
-        <area details="Замена клавиатура" id="2" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="2" href="#" coords="409,1013,24" shape="circle">
-        <area details="Замена клавиатура" id="3" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="3" href="#" coords="515,1011,24" shape="circle">
-        <area details="Замена клавиатура" id="4" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="4" href="#" coords="299,1073,26" shape="circle">
-        <area details="Замена клавиатура" id="5" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="5" href="#" coords="408,1070,26" shape="circle">
-        <area details="Замена клавиатура" id="6" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="6" href="#" coords="515,1072,25" shape="circle">
-        <area details="Замена клавиатура" id="7" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="7" href="#" coords="299,1130,24" shape="circle">
-        <area details="Замена клавиатура" id="8" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="8" href="#" coords="407,1129,24" shape="circle">
-        <area details="Замена клавиатура" id="9" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="9" href="#" coords="513,1130,26" shape="circle">
-        <area details="Замена клавиатура" id="Enter"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="key" title="Enter" href="#" coords="509,1193,31" shape="circle">
-        <area details="Замена клавиатура" id="0" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="key" title="0" href="#" coords="408,1184,24" shape="circle">
-        <area details="Замена клавиатура" id="Cancle"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="key" title="Cancle" href="#" coords="304,1197,32" shape="circle">
-        <area details="Замена клавиатура" id="Clear"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="key" title="Clear" href="#" coords="406,1243,26" shape="circle">
-
-        <area details="" id="Tarakan"
-            data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}' target=""
-            alt="Tarakan" title="Tarakan" href="#"
-            coords="62,1069,68,1032,58,987,65,990,77,1026,98,1045,125,1019,127,964,134,965,135,1009,163,1044,143,1010,140,961,133,950,126,950,119,923,143,935,173,932,148,928,112,912,108,901,108,893,122,870,93,886,94,870,86,878,84,872,97,833,78,876,68,876,41,852,66,881,60,903,51,881,61,910,59,938,29,958,3,965,29,965,54,945,60,972,48,976,58,1030,62,1071"
-            shape="poly">
-        <area details="Замена разъем зарядки" id="DC" data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"ff0000","fillOpacity":0.6}'
-            target="" alt="DC" title="DC" href="#"
-            coords="141,1262,64,1245,57,1197,108,1150,181,1163,186,1205,182,1216,187,1222,172,1221,161,1236,168,1242,163,1247,153,1246"
-            shape="poly">
-    </map>
+        <!-- ImageReady Slices (PAX-S90-ready-image-ready.psd) -->
+        <map name="PAX_S90_ready_image_ready_Map">
+        <area shape="poly" gid="backcase" id="backcase" coords="489,506, 491,507, 498,508, 500,510, 501,515, 502,517, 503,521, 504,529, 503,600, 501,603, 500,608, 494,611, 482,612, 459,611, 456,607, 455,599, 454,569, 455,524, 456,522, 456,519, 458,517, 459,511, 465,508, 471,507, 470,506, 472,505" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="rect" gid="keyboard" id="keyboard" coords="358,436,416,487" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="frontcase" id="frontcase" coords="487,355, 488,358, 493,357, 495,356, 499,359, 502,365, 503,369, 504,377, 505,395, 504,464, 497,470, 460,469, 456,462, 455,459, 454,459, 453,443, 452,425, 453,368, 454,366, 455,360, 456,358, 457,356, 463,358, 464,356, 464,355" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="printerroller" id="printerroller" coords="59,76, 64,82, 74,81, 78,80, 213,81, 215,82, 221,83, 229,84, 227,91, 208,92, 73,92, 72,89, 61,90, 56,95, 54,94, 53,90, 53,75" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="printerchange" id="printerchange" coords="230,52, 231,58, 232,60, 233,68, 232,82, 231,84, 231,95, 231,104, 224,104, 223,94, 223,91, 229,90, 229,83, 227,82, 221,83, 216,82, 214,81, 196,80, 143,80, 144,52" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="printerclean" id="printerclean" coords="129,25, 136,33, 129,37, 127,36, 125,37, 101,38, 103,39, 138,39, 139,52, 142,52, 142,79, 72,80, 67,82, 62,81, 60,76, 59,74, 57,75, 52,75, 53,97, 59,96, 60,92, 62,91, 63,93, 62,113, 43,112, 42,110, 43,92, 42,88, 43,50, 47,49, 49,48, 92,47, 94,44, 95,39,
+        93,34, 92,29, 91,28, 89,29,
+        88,26, 108,25, 122,24" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="printercoverused" id="printercoverused" coords="217,121, 228,127, 234,137, 247,193, 245,208, 143,206, 145,117, 212,120" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="printercovernew" id="printercovernew" coords="142,117, 142,208, 34,207, 35,194, 36,192, 37,186, 38,172, 39,168, 42,149, 43,147, 48,133, 58,122, 64,121, 68,120, 90,117" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"00ff00","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="Clear" coords="157,596, 160,598, 161,602, 160,608, 155,612, 145,615, 135,614, 133,613, 127,610, 123,603, 126,597, 128,596, 142,595" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="Cancle" coords="105,571, 107,574, 108,578, 108,585, 106,586, 104,590, 103,592, 97,597, 84,596, 77,588, 76,586, 75,582, 76,575, 80,571, 103,571" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n0" coords="161,568, 163,573, 162,579, 155,585, 144,587, 133,586, 125,581, 123,574, 124,569, 129,567" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="Enter" coords="199,570, 207,571, 210,575, 209,586, 206,592, 204,593, 204,594, 203,593, 200,596, 197,596, 189,595, 187,594, 182,590, 178,581, 177,577, 178,573, 182,570" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n9" coords="208,539, 214,543, 215,547, 214,553, 209,557, 200,559, 188,558, 186,557, 180,554, 177,548, 178,540, 182,539, 196,538" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n8" coords="160,539, 163,543, 162,550, 156,556, 143,558, 133,557, 131,556, 124,551, 123,545, 124,541, 127,539, 131,538" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n7" coords="107,540, 108,543, 109,543, 108,551, 102,557, 92,560, 78,559, 72,554, 71,552, 72,542, 78,539" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n4" coords="108,512, 109,516, 108,522, 102,528, 92,531, 79,530, 77,529, 72,525, 71,521, 72,514, 74,512, 76,511" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n5" coords="160,510, 163,516, 162,522, 158,526, 150,529, 146,530, 134,529, 132,528, 125,524, 123,517, 124,512, 128,509" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n6" coords="210,510, 211,512, 214,513, 215,519, 214,524, 210,528, 197,530, 188,529, 186,528, 181,525, 177,520, 178,512, 183,510" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n3" coords="211,482, 214,486, 215,492, 208,499, 200,500, 188,499, 181,494, 178,490, 179,483, 181,482, 189,481" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n2" coords="157,481, 160,481, 161,483, 163,484, 162,493, 156,498, 149,500, 145,501, 134,500, 132,499, 127,496, 123,491, 124,483, 127,481" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="key" id="n1" coords="107,482, 106,483, 108,485, 109,487, 108,492, 101,499, 92,501, 86,502, 84,501, 77,500, 71,495, 72,484, 75,482, 79,481" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="keyC" id="alpha" coords="104,447, 108,450, 108,455, 105,460, 101,463, 91,466, 79,465, 72,460, 71,454, 73,449, 78,447, 86,446" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="keyC" id="down" coords="159,447, 161,450, 163,451, 162,458, 157,463, 147,466, 134,465, 132,464, 125,459, 123,454, 124,449, 126,447, 128,446" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="keyC" id="menu" coords="207,446, 209,447, 214,451, 215,455, 214,460, 210,464, 197,466, 184,463, 177,455, 178,449, 184,446, 200,445" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="keyC" id="func" coords="210,417, 214,421, 215,425, 214,430, 210,434, 201,436, 189,435, 187,434, 182,431, 178,426, 178,420, 179,419, 178,418, 179,417, 180,418, 182,417, 188,416" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="keyC" id="up" coords="153,418, 161,425, 162,428, 163,430, 162,433, 158,436, 151,437, 149,436, 147,437, 131,436, 125,435, 123,428, 128,421, 134,418, 138,417" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="keyC" id="power" coords="106,417, 108,420, 107,429, 103,432, 97,435, 89,436, 75,433, 72,429, 71,425, 72,421, 75,417, 87,416" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="rect" gid="keyC" id="f4" coords="219,364,239,378" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="rect" gid="keyC" id="f3" coords="220,339,239,354" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="rect" gid="keyC" id="f2" coords="220,315,239,331" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="rect" gid="keyC" id="f1" coords="220,293,239,307" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"0000ff","fillOpacity":0.6}' href="#">
+        <area shape="rect" gid="screen" id="screen" coords="68,285,204,376" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.8}' href="#">
+        <area shape="poly" gid="newdc" id="newdc" coords="420,364, 416,391, 410,397, 413,400, 400,409, 360,399, 360,374, 372,361, 372,359, 378,358, 386,354, 419,362" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"00ff00","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="magreader" id="magreader" coords="305,352, 309,391, 311,393, 314,421, 310,449, 308,450, 305,470, 302,490, 298,493, 285,489, 283,450, 277,447, 278,393, 285,388, 289,351" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="Tarakan" id="Tarakan" coords="303,521, 305,518, 305,529, 312,530, 313,528, 315,526, 320,519, 314,536, 316,543, 317,543, 322,545, 324,546, 335,551, 341,552, 325,554, 324,559, 326,563, 330,591, 334,602, 337,609, 335,609, 329,596, 326,593, 323,595, 324,605, 319,608, 309,611, 297,605, 292,605,
+        291,601, 287,617, 287,603,
+        283,590, 282,573, 282,571, 289,569, 285,559, 281,561, 279,564, 276,565, 276,567, 274,567, 270,566, 273,564, 273,563, 278,560, 278,558, 280,558, 280,557, 287,551, 287,542, 284,530, 283,526, 288,527, 291,527, 281,515, 273,506, 295,524, 299,521, 307,499, 301,523, 303,523" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="circle" gid="water" id="water" coords="395,563,43" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="simreader" id="simreader" coords="449,238, 478,311, 474,320, 392,317, 388,315, 311,319, 285,317, 288,290, 308,233" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="cpu" id="cpu" coords="404,189, 423,189, 424,193, 425,197, 426,201, 427,205, 430,215, 431,222, 401,221, 357,220, 329,219, 322,219, 323,208, 324,206, 329,188" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="protection" id="protection" coords="307,222, 319,225, 317,232, 304,234, 286,292, 282,324, 278,323, 273,314, 272,300, 285,251, 297,220" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="protection" id="protection" coords="460,228, 469,251, 489,312, 479,325, 478,302, 457,250, 448,236, 438,230, 444,225" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="dcjack" id="dcjack" coords="478,118, 483,128, 482,139, 481,141, 480,142, 476,143, 474,144, 469,143, 467,142, 464,141, 463,143, 463,144, 462,139, 457,140, 457,141, 456,138, 454,135, 453,129, 454,117" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="batteries" id="batteries" coords="352,91, 354,92, 360,95, 362,98, 361,110, 349,117, 335,118, 320,117, 314,112, 312,107, 311,104, 310,103, 320,94, 326,91, 334,90" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="batteries" id="batteries" coords="400,119, 402,120, 407,121, 413,124, 416,125, 426,134, 428,139, 429,143, 428,155, 426,158, 425,163, 420,170, 412,175, 400,178, 388,179, 384,178, 374,177, 368,174, 359,169, 355,165, 352,161, 351,157, 350,140, 349,138, 349,131, 353,130, 367,121, 371,120,
+        380,118" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="poly" gid="buzzer" id="buzzer" coords="323,148, 324,150, 325,150, 327,153, 328,153, 330,160, 329,171, 321,179, 322,180, 320,182, 303,181, 301,168, 302,165, 300,163, 299,160, 306,152, 311,150, 315,149, 317,148" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+        <area shape="rect" gid="conactlessboard" id="conactlessboard" href="#" coords="49,249,242,470"  data-maphilight='{"strokeColor":"ee0000","strokeWidth":2,"fillColor":"ff0000","fillOpacity":0.4}' >
+        </map>
 
 </body>
 <script src="js.js"></script>
