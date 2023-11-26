@@ -24,6 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.2/jquery.maphilight.min.js"
         integrity="sha512-1YiTT24MNHA6DRzyu+w9F5Egc8evYlyEnzSSTD4/M7q42xEb5fSpNgn0+1CPy3evubHs3xdlh8uXgae0DOhR7Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://kit.fontawesome.com/e8e55b4ad4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -33,9 +34,9 @@
 
     <div class="buttons">
       
-        <button id="copyText" class="btn">Copy text</button>
-        <button id="reset" class="btn">Reset</button>
-        <button onClick="window.location.reload();" class="btn" >Refresh Page</button>
+        <button id="copyText" class="btn copying" >Copy text <i class="fa-solid fa-copy"></i></button>
+        <button id="reset" class="btn clean">Clean <i class="fa-solid fa-delete-left"></i></button>
+        <button onClick="window.location.reload();" class="btn" >Refresh <i class="fa-solid fa-arrows-rotate"></i></button>
     </div>
 
     <div class="dancers">
@@ -47,6 +48,8 @@
     <map name="image-map" id="map">
         <!-- ImageReady Slices (PAX-S90-ready-image-ready.psd) -->
         <map name="PAX_S90_ready_image_ready_Map">
+        <area shape="poly" gid="usb" id="usb" coords="30,406, 31,430, 33,431, 32,463, 27,465, 25,466, 24,470, 24,477, 23,489, 24,502, 26,503, 38,504, 38,511, 15,511, 14,499, 15,495, 14,482, 13,482, 12,467, 8,464, 5,463, 4,461, 4,430, 7,429, 7,406" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
+
         <area shape="poly" gid="backcase" id="backcase" coords="489,506, 491,507, 498,508, 500,510, 501,515, 502,517, 503,521, 504,529, 503,600, 501,603, 500,608, 494,611, 482,612, 459,611, 456,607, 455,599, 454,569, 455,524, 456,522, 456,519, 458,517, 459,511, 465,508, 471,507, 470,506, 472,505" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
         <area shape="rect" gid="keyboard" id="keyboard" coords="358,436,416,487" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
         <area shape="poly" gid="frontcase" id="frontcase" coords="487,355, 488,358, 493,357, 495,356, 499,359, 502,365, 503,369, 504,377, 505,395, 504,464, 497,470, 460,469, 456,462, 455,459, 454,459, 453,443, 452,425, 453,368, 454,366, 455,360, 456,358, 457,356, 463,358, 464,356, 464,355" data-maphilight='{"strokeColor":"0000ff","strokeWidth":3,"fillColor":"ff0000","fillOpacity":0.6}' href="#">
@@ -100,7 +103,9 @@
         <area shape="rect" gid="keyC" id="conactlessboard" href="#" coords="49,249,242,470"  data-maphilight='{"strokeColor":"ee0000","strokeWidth":2,"fillColor":"ff0000","fillOpacity":0.4}' >
         <area shape="poly" gid="boardio" id="boardio" href="#"   coords="430,45, 453,83, 463,85, 464,94, 456,98, 458,100, 462,102, 464,104, 475,106, 476,114, 386,117, 363,117, 362,109, 361,96, 352,91, 330,90, 314,98, 311,101, 309,108, 303,107, 292,107, 298,95, 304,89, 308,80, 316,77, 317,65, 313,62, 321,40, 426,41" data-maphilight='{"strokeColor":"ee0000","strokeWidth":2,"fillColor":"ff0000","fillOpacity":0.4}' >
         </map>
-
+<footer>
+     <a href="https://github.com/Ahmedhkad/Terminal-Diagnostic-Helper">© 2023 Ал Омаири Ахмед</a>
+</footer>
 </body>
 <script src="js.js"></script>
 
