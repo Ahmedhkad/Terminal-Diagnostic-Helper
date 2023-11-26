@@ -1,5 +1,6 @@
 let details = {
-    backcase : "Замена заднего корпуса",
+    usb: "Восстановление ПО",
+    backcase: "Замена заднего корпуса",
     keyboard: "Замена клавиатуры",
     frontcase: "Замена переднего корпуса",
     printerroller: "Замена ролика принтера",
@@ -26,10 +27,9 @@ let details = {
 }
 
 let tempDetails = {}
- 
+
 $(function () {
     $('.maparea').maphilight({
-         
         // "strokeColor":"0000ff",
         // "strokeWidth":3,
         // "fillColor":"ff0000",
@@ -47,33 +47,35 @@ $("#map area").click(function () {
     const id = $(this).attr("id");
     const gid = $(this).attr("gid");
     // console.log(id +" is id");
+    console.log('this issss:');
+    console.log(this);
 
     if (data.alwaysOn) {
-        tempDetails[gid]  = details[gid]  
+        tempDetails[gid] = details[gid]
     }
     else {
-        tempDetails[gid]  = false
+        tempDetails[gid] = false
     }
     checkDetails()
-    console.log(tempDetails); 
+    console.log(tempDetails);
 });
 
-$("#Tarakan").click(function () {   
-    const dancers = document.querySelector('.dancers') ;
+$("#Tarakan").click(function () {
+    const dancers = document.querySelector('.dancers');
     dancers.classList.toggle("visible");
     $('#titleInput').val(details.Tarakan)
 });
 
-$("#water").click(function () {   
+$("#water").click(function () {
     $('#titleInput').val(details.water)
 });
 
-$("#cpu").click(function () {   
+$("#cpu").click(function () {
     $('#titleInput').val(details.cpu)
 });
 
-$("#conactlessboard").click(function () { 
-    tempDetails.keyC =  "Замена платы ктлц"
+$("#conactlessboard").click(function () {
+    tempDetails.keyC = "Замена платы ктлц"
     checkDetails()
     // $('#titleInput').val(details.conactlessboard)
 });
@@ -95,31 +97,25 @@ checkDetails = () => {
 }
 
 
-$('#copyText').on('click', () => {
-    navigator.clipboard.writeText($('#titleInput').val());
-  });
-  
-  
-  $('#reset').on('click', () => {
-    // $("map area").data('maphilight', { alwaysOn: false }).trigger('alwaysOn.maphilight');
-
-    var highlightedItems = document.querySelectorAll("#map area");
-// console.log(highlightedItems);
-highlightedItems.forEach(function (item) {
- 
-    
-// console.log(item.dataset.maphilight);
-
-let data2 = item.dataset.maphilight;
-    data2.alwaysOn = "false";
-    console.log(data2);
-    
-    // item.trigger('alwaysOn.maphilight');
-
-// data.alwaysOn = false
-//  item.trigger('alwaysOn.maphilight')
-//  console.log(item.dataset.maphilight);
-//   console.log((this).data('maphilight'));
+$('#copyText').click(function () {
+    // navigator.clipboard.writeText($('#titleInput').val());
+    $("#titleInput").select();
+    document.execCommand('copy');
 });
- 
-  });
+
+
+$('#reset').on('click', () => {
+    var highlightedItems = document.querySelectorAll("#map area");
+    // console.log(highlightedItems);
+    highlightedItems.forEach(function (item) {
+
+        const dataX = $(item).data('maphilight') || {};
+        dataX.alwaysOn = false;
+        // dataX.alwaysOn = !dataX.alwaysOn;
+        // console.log(data);
+        $(item).trigger('alwaysOn.maphilight');
+    });
+    tempDetails = {};
+
+    checkDetails();
+});
