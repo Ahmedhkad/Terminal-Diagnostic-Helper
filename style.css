@@ -4,11 +4,16 @@ body {
   background: linear-gradient(135deg, #7d7e7d 0%, #0e0e0e 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  margin: 0;
 }
+
 
 .buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+ 
 }
 
 .inputHolder {
@@ -26,6 +31,7 @@ body {
 .inputHolder2 {
   padding: 10px;
   margin: 10px;
+  
   /* width: -webkit-fill-available; */
   width: 82%;
   border-radius: 25px;
@@ -35,15 +41,44 @@ body {
   font-family: sans-serif;
 }
 
+.serialform {
+  margin: 10px;
+  margin-left:2px ;
+  margin-right:2px;
+  /* padding: 10px; */
+  /* text-align: center; */
+}
+.form-control{
+  width: 183px;
+  font-size: large;
+    padding: 10px;
+    /* border-radius: 23px; */
+    border-top-left-radius: 25px;
+    /* border-top-right-radius: 23px; */
+    /* border-bottom-right-radius: 23px; */
+    border-bottom-left-radius: 25px;
+}
+.form-btn{
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: large;
+  border-top-right-radius: 25px; 
+  border-bottom-right-radius: 25px; 
+}
+
 .btn {
   padding: 10px;
   /* width: -webkit-fill-available; */
   border-radius: 25px;
   margin: 10px;
+  margin-left:2px ;
+  margin-right:2px;
   text-align: center;
   font-size: large;
   cursor: pointer;
 }
+
 
 .btnbeta {
   border-radius: 15px;
@@ -52,6 +87,13 @@ body {
   border-width: 5px;
   position: absolute;
   margin-top: 15px !important;
+}
+.btn-small{
+  padding: 3px;
+   
+  margin: 0px;
+  font-size: small;
+   
 }
 .clean {
   background-color: coral;
@@ -67,6 +109,17 @@ body {
 .dancers {
   display: none;
 }
+.repeated{
+  display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: aliceblue;
+  padding: 4px;
+}
 
 .visible {
   display: block;
@@ -75,6 +128,29 @@ body {
   top: 470px;
   left: 77px;
 }
+
+nav {
+ 
+  display: flex;
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #000000;
+  color: lightgray;
+  font-family: sans-serif;
+  text-decoration: none !important;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  font-size: larger;
+
+}
+ 
 
 footer {
   position: fixed;

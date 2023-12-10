@@ -25,18 +25,39 @@
         integrity="sha512-1YiTT24MNHA6DRzyu+w9F5Egc8evYlyEnzSSTD4/M7q42xEb5fSpNgn0+1CPy3evubHs3xdlh8uXgae0DOhR7Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://kit.fontawesome.com/e8e55b4ad4.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
+    <nav>
     
+        <a  > <i class="fa-brands fa-quinscape"></i> Сервис-Волга     </a>
+        <button onClick="window.location.reload();" class="btn btn-small" ><i class="fa-solid fa-arrows-rotate"></i> Refresh </button>
+         
+    </nav>
+     
     
-    <textarea id="titleInput" class="inputHolder" placeholder="Enter text here..." rows="" cols="" name="" form=""> </textarea>
+    <div class="beta"><textarea id="titleInput2" class="inputHolder" placeholder="" rows="" cols="" name="" form=""> </textarea>
+        </div>
 
     <div class="buttons">
-      
-        <button id="copyText" class="btn copying" >Copy text <i class="fa-solid fa-copy"></i></button>
-        <button id="reset" class="btn clean">Clean <i class="fa-solid fa-delete-left"></i></button>
-        <button onClick="window.location.reload();" class="btn" >Refresh <i class="fa-solid fa-arrows-rotate"></i></button>
+         
+<div>
+        <form action="" id="SerialNumber" class="serialform">
+            <!-- <span>SerialNumber: </span> -->
+            <input type="text" id="serial" class="form-control" placeholder="serial number">
+            <button class="form-btn"  type="submit"> <i class="fa-brands fa-searchengin"></i> Search</button>
+          </form>
+   </div>     
+      <div>
+        <button id="copyText2" class="btn copying" ><i class="fa-solid fa-copy"></i> Copy</button>
+        <button id="reset" class="btn clean"> <i class="fa-solid fa-delete-left"></i> Clean</button>
+        
+    </div>
+    </div>
+
+    <div id="tablePlace" class="repeated">
+
     </div>
 
     <div class="dancers">
@@ -103,12 +124,14 @@
         <area shape="rect" gid="keyC" id="conactlessboard" href="#" coords="49,249,242,470"  data-maphilight='{"strokeColor":"ee0000","strokeWidth":2,"fillColor":"ff0000","fillOpacity":0.4}' >
         <area shape="poly" gid="boardio" id="boardio" href="#"   coords="430,45, 453,83, 463,85, 464,94, 456,98, 458,100, 462,102, 464,104, 475,106, 476,114, 386,117, 363,117, 362,109, 361,96, 352,91, 330,90, 314,98, 311,101, 309,108, 303,107, 292,107, 298,95, 304,89, 308,80, 316,77, 317,65, 313,62, 321,40, 426,41" data-maphilight='{"strokeColor":"ee0000","strokeWidth":2,"fillColor":"ff0000","fillOpacity":0.4}' >
         </map>
-<div class="beta"><textarea id="titleInput2" class="inputHolder2" placeholder="" rows="" cols="" name="" form=""> </textarea>
-        <button id="copyText2" class="btn btnbeta" > <i class="fa-solid fa-copy">   <br> <i class="fa-solid fa-table"></i></i>  </i></button></div>
+
+
+        <textarea id="titleInput" class="inputHolder2" placeholder="Enter text here..." rows="" cols="" name="" form=""> </textarea>
+        <button id="copyText" class="btn btnbeta" > <i class="fa-solid fa-copy"> x </i></button>
         
 <footer>
     
-     <a  > Terminal-Diagnostic-Helper v0.4-beta.2  © 2023 Ал Омаири Ахмед   </a>
+     <a  > Terminal-Diagnostic-Helper v0.5-alpha.1  © 2023 Ал Омаири Ахмед   </a>
      <a href="https://github.com/Ahmedhkad/Terminal-Diagnostic-Helper" style="padding-left: 5px;">    <i class="fa-brands fa-github">  </i> </a>
 </footer>
 </body>
