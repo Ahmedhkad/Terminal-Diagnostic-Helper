@@ -12,10 +12,11 @@ let details = {
     screen: ["Замена дисплея", "Экран"],
     newdc: ["Замена разъема зарядки", "Не заряжается"],
     magreader: ["Замена магнитный ридер", "Зависает"],
-    Tarakan: ["Отказ. Залит тараканами", "Залит"],
-    water: ["Отказ. попадание жидкости", "Залит"],
-    simreader: ["Перепайка картридера", "SIM"],
-    cpu: ["Отказ. системная плата", "Залит"],
+    Tarakan: ["Отказ. тараканы", "TAMPER"],
+    water: ["Отказ. попадание жидкости", "TAMPER"],
+    changesimreader: ["Перепайка картридера", "не читает карты"],
+    cleansimreader: ["Очистка картридера", "не читает карты"],
+    cpu: ["Отказ. системная плата", "TAMPER"],
     protection: ["Перепайка тамперного модуля", ""],
     dcjack: ["Перепайка разъема зарядки", "Не заряжается"],
     batteries: ["Замена акб", "TAMPER"],
@@ -66,7 +67,7 @@ $("#Tarakan").click(function () {
     dancers.classList.toggle("visible");
     $('#titleInput').val(details.Tarakan)
     var problem = Object.keys(tempDetails)[0]
-    $('#titleInput2').val('S90' + '	' + tempSerial +'	' + tempDetails[problem][1] + '	' + "Отказ. Залит тараканами")
+    $('#titleInput2').val('S90' + '	' + tempSerial +'	' + tempDetails[problem][1] + '	' + "Отказ. TAMPER тараканами")
 });
 
 $("#water").click(function () {
@@ -172,7 +173,7 @@ SerialNumber.addEventListener("submit", (e) => {
         // }
         // username.value = "";
 
-        axios.get('http://192.168.1.199:1130/search?text=' + serial.value)
+        axios.get('http://192.168.1.68:1130/search?text=' + serial.value)
             .then(response => {
                 const data = response.data
                 console.log(data); // The response body
