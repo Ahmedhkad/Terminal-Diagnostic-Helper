@@ -167,3 +167,29 @@ footer {
   font-family: sans-serif;
   text-decoration: none !important;
 }
+
+.searchResult{
+   
+}
+
+.check-butons{
+  margin-left: 10px;
+}
+.repeated2 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  float: right;
+  width: 80%;
+}
+
+.inputHolder22 {
+  padding: 10px;
+  margin-left: 10px;
+  /* width: -webkit-fill-available; */
+  width: 15%;
+  border-radius: 15px;
+  /* font-size: x-large; */
+  
+  font-family: sans-serif;
+}
