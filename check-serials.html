@@ -53,18 +53,24 @@
     </nav>
     <div class="check-butons">
 
-        <h3>Поиск повторяющихся аппаратов</h3>
-        
-        <button id="buttonRest" class="btn clean"> <i class="fa-solid fa-delete-left"></i> Clean</button>
+        <div class="left-buttons">
+          <button id="buttonRest" class="btn clean"> <i class="fa-solid fa-delete-left"></i> Clean</button>
 
-        <button class="btn copying" id="buttonGet" type="button"><i class="fa-solid fa-list-check"></i> Check</button>
+        <button class="btn copying" id="buttonGet" type="button"><i class="fa-solid fa-list-check"></i> <span id="searchText">Search</span></button>  
+
+        </div>
+        <div class="pageTitle">
+             
+            <h3>Поиск повторяющихся аппаратов</h3>
+            <span class="counter"> </span>
+        </div>
 
 
     </div>
 
     <div class="searchResult">
 
-        <textarea name="" id="textcopied" class="inputHolder22" cols="20" rows="10"></textarea>
+        <textarea name="" id="textcopied" class="inputHolder22" cols="15" rows="40"></textarea>
 
         <div id="tablePlace" class="repeated2">
             <div class="test"></div>
@@ -77,7 +83,7 @@
     </div>
     <footer>
 
-        <a> Terminal-Diagnostic-Helper v0.5-alpha.1 © 2023 Ал Омаири Ахмед </a>
+        <a> Terminal-Diagnostic-Helper v0.6.0 © 2023 Ал Омаири Ахмед </a>
         <a href="https://github.com/Ahmedhkad/Terminal-Diagnostic-Helper" style="padding-left: 5px;"> <i
                 class="fa-brands fa-github"> </i> </a>
     </footer>
