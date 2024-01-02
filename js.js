@@ -27,8 +27,9 @@ let details = {
     boardio: ["Замена нижней платы", "Не печатает"]
 }
 
-let tempDetails = {}
-let tempSerial = {}
+
+let tempDetails = { }
+let tempSerial = { }
 
 $(function () {
     $('.maparea').maphilight({
@@ -107,9 +108,21 @@ checkDetails = () => {
     console.log(list);
     var problem = Object.keys(tempDetails)[0]
 
-    var newList = list.join(',').replace(/,/g, ' + ').split();
+    var newList = ' '
+    newList = list.join(',').replace(/,/g, ' + ').split();
+    console.log(newList);
+    var firstProblem = tempDetails[problem][1]
+    console.log(firstProblem);
+    if (!firstProblem) {
+        firstProblem = '	'    
+    }
+    console.log(tempSerial);
+    if(!tempSerial[0]){
+        
+        tempSerial =  $("#serial").val(); 
+    }
     $('#titleInput').val(newList)
-    $('#titleInput2').val('S90' + '	' + tempSerial +'	' + tempDetails[problem][1] + '	' + newList)
+    $('#titleInput2').val('S90' + '	' + tempSerial +'	' + firstProblem    + '	' + newList)
 }
 
 
@@ -159,7 +172,10 @@ SerialNumber.addEventListener("submit", (e) => {
 
     if (serial.value == "") {
         // alert("Ensure you input a value in both fields!");
+        $('#searchText').text('Empty!')
     } else {
+        $('#searchText').text(' Sending ... wait')
+        $('.form-btn').css('background-color', 'yellow')
         // perform operation with form input
         // alert("This form has been successfully submitted!");
         console.log(serial.value)
@@ -173,10 +189,17 @@ SerialNumber.addEventListener("submit", (e) => {
         // }
         // username.value = "";
 
-        axios.get('http://192.168.1.68:1130/search?text=' + serial.value)
+        axios.get('http://192.168.1.199:1130/search?sn=' + serial.value)
             .then(response => {
+                // console.log(response);
                 const data = response.data
                 console.log(data); // The response body
+                 
+                if(response.statusText == 'OK'){
+                   $('#searchText').text('Search') 
+                   $('.form-btn').css('background-color', 'chartreuse')
+                }
+                
 
                 for (var key in data) {
                     if (data.hasOwnProperty(key)) {
@@ -190,6 +213,9 @@ SerialNumber.addEventListener("submit", (e) => {
             })
             .catch(error => {
                 console.error(error);
+                 
+                $('#searchText').text(error.message) 
+                $('.form-btn').css('background-color', 'orangered')
             });
 
 
@@ -240,4 +266,5 @@ SerialNumber.addEventListener("submit", (e) => {
 
 
     }
+    // checkDetails();
 });
