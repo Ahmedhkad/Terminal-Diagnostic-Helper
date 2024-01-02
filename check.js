@@ -6,6 +6,8 @@ document.getElementById("buttonGet").onclick = function () {
     const serialsList = data.value.split("\n")
     console.log(serialsList);
 
+    $('#tablePlace').append('<tr><th>Модель</th><th>Сер.номер</th><th>Заявленная неисправность</th><th>Произведенная работа</th><th>Файл</th><th>Сервер</th></tr>')
+    
     serialsList.forEach(element => {
         if (element) {
             // console.log(element);
@@ -15,6 +17,7 @@ document.getElementById("buttonGet").onclick = function () {
 
 
 };
+let counter = 0
 
 $('#buttonRest').on('click', () => {
     document.getElementById("textcopied").focus();
@@ -22,6 +25,8 @@ $('#buttonRest').on('click', () => {
 
     // $('#titleInput2').val('Cleaned!')
     $('#tablePlace').text('')
+    counter = 0
+    $('.counter').text('') 
 
 });
 
@@ -29,14 +34,46 @@ $('#buttonRest').on('click', () => {
 function check(serial) {
     if (serial == "") {
         // alert("Ensure you input a value in both fields!");
+        $('#searchText').text('Empty!')
     } else {
-        axios.get('http://192.168.1.68:1150/search?text=' + serial)
+        $('#searchText').text(' Sending ... wait')
+        $('#buttonGet').css('background-color', 'yellow')
+
+        axios.get('http://192.168.1.199:1130/search?sn=' + serial)
             .then(response => {
-                // console.log(response.data);
+                console.log(response);
+                counter = counter + response.data.length
+                if(response.statusText == 'OK'){
+                    $('#searchText').text('Search') 
+                    
+                    $('#buttonGet').css('background-color', 'chartreuse')
+                 }
                 const data = response.data
-                appendata(data); // The response body
+                
+                console.log(data);
+                if( data.length == 0){
+                    console.log('empty');
+                    appendata(false, serial, response.statusText );
+                }
+                for (var key in data) {
+                    
+                     
+                        console.dir(data[key]);
+                        // console.log(data.length);
+                        // $('.repeated').append(buildHtmlTable([data[key]]))
+                        appendata(data[key], serial, response.statusText ); // The response body
+                    
+                }
+
+                $('.counter').text('найден : ' + counter) 
             })
             .catch(error => {
+                
+                $('#tablePlace').append('<tr class="redTable"><td>error !</td>  <td colspan="4"> No answer from server , try again or ask Ahmed !</td> <td>'+error.code+'</td>  </tr>')
+
+                $('#searchText').text(error.message) 
+                $('#buttonGet').css('background-color', 'orangered')
+
                 console.error(error);
             });
 
@@ -46,56 +83,17 @@ function check(serial) {
 
 const list = document.getElementById("json-data");
 
-function appendata(data) {
+function appendata(data,sn,statusText) {
     console.log(data);
+    if(data){
+        // $('#tablePlace').append(buildHtmlTable([data]))
 
-    // $('#tablePlace').append(buildHtmlTable([JSON.stringify(data)]))
-    $('#tablePlace').append(buildHtmlTable([data]))
+        $('#tablePlace').append('<tr class="redTable"><td>'+data.Model+'</td><td>'+data.SerialNumber+'</td> <td>'+data.Problem+'</td><td>'+data.details+'</td><td>'+data.filename+'</td><td>'+statusText+'</td> </tr>')
+
+    }
+    else{
+        $('#tablePlace').append(' <tr class="greenTable"><td>ОК</td> <td>'+sn+'</td><td colspan="3">Серийный номер не найден в БД</td> <td>'+statusText+'</td></tr> ')
+
+    }
     
 }
-
-
-var _table_ = document.createElement('table'),
-            _tr_ = document.createElement('tr'),
-            _th_ = document.createElement('th'),
-            _td_ = document.createElement('td');
-
-        // Builds the HTML Table out of myList json data from Ivy restful service.
-        function buildHtmlTable(arr) {
-            var table = _table_.cloneNode(false),
-                columns = addAllColumnHeaders(arr, table);
-            for (var i = 0, maxi = arr.length; i < maxi; ++i) {
-                var tr = _tr_.cloneNode(false);
-                for (var j = 0, maxj = columns.length; j < maxj; ++j) {
-                    var td = _td_.cloneNode(false);
-                    var cellValue = arr[i][columns[j]];
-                    td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
-                    tr.appendChild(td);
-                }
-                table.appendChild(tr);
-            }
-            return table;
-        }
-
-        // Adds a header row to the table and returns the set of columns.
-        // Need to do union of keys from all records as some records may not contain
-        // all records
-        function addAllColumnHeaders(arr, table) {
-            var columnSet = [],
-                tr = _tr_.cloneNode(false);
-            for (var i = 0, l = arr.length; i < l; i++) {
-                for (var key in arr[i]) {
-                    if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key) === -1) {
-                        columnSet.push(key);
-                        var th = _th_.cloneNode(false);
-                        th.appendChild(document.createTextNode(key));
-                        tr.appendChild(th);
-                    }
-                }
-            }
-            table.appendChild(tr);
-            return columnSet;
-        }
-
-
-
