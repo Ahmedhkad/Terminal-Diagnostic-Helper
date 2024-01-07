@@ -31,8 +31,10 @@ $('#buttonRest').on('click', () => {
 });
 
 
-function check(serial) {
+function check(serialUnchecked) {
+    const serial = keyboardLayoutSwitch(serialUnchecked)
     if (serial == "") {
+        
         // alert("Ensure you input a value in both fields!");
         $('#searchText').text('Empty!')
     } else {
@@ -88,7 +90,7 @@ function appendata(data,sn,statusText) {
     if(data){
         // $('#tablePlace').append(buildHtmlTable([data]))
 
-        $('#tablePlace').append('<tr class="redTable"><td>'+data.Model+'</td><td>'+data.SerialNumber+'</td> <td>'+data.Problem+'</td><td>'+data.details+'</td><td>'+data.filename+'</td><td>'+statusText+'</td> </tr>')
+        $('#tablePlace').append('<tr class="redTable"><td>'+data.Model+'</td><td>'+data.SerialNumber+'</td> <td>'+data.Problem+'</td><td>'+data.Details+'</td><td>'+data.filename+'</td><td>'+statusText+'</td> </tr>')
 
     }
     else{
