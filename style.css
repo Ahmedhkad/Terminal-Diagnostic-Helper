@@ -219,3 +219,9 @@ footer {
 .redTable {
   color: red;
 }
+
+
+.bold{
+  font-weight: bold;
+  color: darkred;
+}

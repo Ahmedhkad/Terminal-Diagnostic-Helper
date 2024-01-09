@@ -41,7 +41,7 @@ function check(serialUnchecked) {
         $('#searchText').text(' Sending ... wait')
         $('#buttonGet').css('background-color', 'yellow')
 
-        axios.get('http://192.168.1.199:1130/search?sn=' + serial)
+        axios.get('http://'+serverEnv.ip+'/search?sn=' + serial)
             .then(response => {
                 console.log(response);
                 counter = counter + response.data.length
@@ -51,6 +51,10 @@ function check(serialUnchecked) {
                     $('#buttonGet').css('background-color', 'chartreuse')
                  }
                 const data = response.data
+                let bold = false
+                if (response.data.length > 1) {
+                    bold = true
+                }
                 
                 console.log(data);
                 if( data.length == 0){
@@ -63,7 +67,7 @@ function check(serialUnchecked) {
                         console.dir(data[key]);
                         // console.log(data.length);
                         // $('.repeated').append(buildHtmlTable([data[key]]))
-                        appendata(data[key], serial, response.statusText ); // The response body
+                        appendata(data[key], serial, response.statusText, bold ); // The response body
                     
                 }
 
@@ -85,12 +89,14 @@ function check(serialUnchecked) {
 
 const list = document.getElementById("json-data");
 
-function appendata(data,sn,statusText) {
+function appendata(data,sn,statusText, bold) {
     console.log(data);
     if(data){
         // $('#tablePlace').append(buildHtmlTable([data]))
+        let addClass = ''
+        if(bold){addClass = 'bold'}
 
-        $('#tablePlace').append('<tr class="redTable"><td>'+data.Model+'</td><td>'+data.SerialNumber+'</td> <td>'+data.Problem+'</td><td>'+data.Details+'</td><td>'+data.filename+'</td><td>'+statusText+'</td> </tr>')
+        $('#tablePlace').append('<tr class="redTable '+ addClass +'"><td>'+data.Model+'</td><td>'+data.SerialNumber+'</td> <td>'+data.Problem+'</td> <td>'+ data.Details +'</td> <td>'+data.filename+'</td><td>'+statusText+'</td> </tr>')
 
     }
     else{
