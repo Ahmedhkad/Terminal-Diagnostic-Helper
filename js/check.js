@@ -105,3 +105,9 @@ function appendata(data,sn,statusText, bold) {
     }
     
 }
+
+
+$(document).ready(function(){
+    // your code
+    $('#version').text(serverEnv.version)
+    });
