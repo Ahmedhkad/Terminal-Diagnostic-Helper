@@ -1,5 +1,5 @@
 let details = {
-    usb: ["Восстановление ПО", "TAMPER"],
+    usb: ["Восстановление ПО", "Проблеммы с ПО"],
     backcase: ["Замена заднего корпуса", "Корпус МЕХ"],
     keyboard: ["Замена клавиатуры", "Залипает клавиатура"],
     frontcase: ["Замена переднего корпуса", "Корпус МЕХ"],
@@ -25,7 +25,8 @@ let details = {
     conactlessboard: ["Замена платы ктлц", "Залипает клавиатура"],
     key: ["Очистка клавиатуры", "Залипает клавиатура"],
     keyC: ["Очистка платы ктлц", "Залипает клавиатура"],
-    boardio: ["Замена нижней платы", "Не печатает"]
+    boardio: ["Замена нижней платы", "Не печатает"],
+    ctls: ["Замена платы ктлц", "Залипает CTLS"]
 }
 
 const models = {
@@ -119,10 +120,11 @@ $("#cpu").click(function () {
 
 
 $("#conactlessboard").click(function () {
-    tempDetails.keyC = ["Замена платы ктлц", "Залипает клавиатура"]
+    tempDetails.conactlessboard = ["Замена платы ктлц", "Залипает клавиатура"]
     checkDetails()
     // $('#titleInput').val(details.conactlessboard)
 });
+
 
 checkDetails = () => {
     checkModel(($("#serial").val()), models)
