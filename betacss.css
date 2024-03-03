@@ -1,0 +1,79 @@
+.container{
+    display: flex;
+    gap: 54px;
+  }
+  .form-control {
+    margin-right: 10px;
+  }
+
+  .selected {
+    background-color: lightgreen;
+  }
+ 
+ 
+.item {
+     
+     
+    
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: black;
+    margin-bottom: 10px;
+    position: relative;
+    transition: background-color 0.3s;
+  }
+
+  .item img {
+    width: 30%;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    object-fit: cover;
+  }
+
+  .item-text {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    flex: 1;
+    padding: 0 10px;
+  }
+
+  .item:hover {
+    background-color: #0f160f;
+    box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00, 0 0 60px #00ff00;
+  }
+
+  .item.selected {
+    border: 3px solid #ff0000;
+    color: #ff0000;
+  }
+
+
+  /* #problemsList, #fixesList {
+    max-height: 80vh;
+    overflow-y: auto; /* Add scrollbars if content overflows */
+   
+  
+
+  #fixesList {
+    max-height: 80vh;
+    column-count: 2; /* Display as two columns */
+    column-gap: 20px; /* Adjust the gap between columns */
+    overflow-y: auto; /* Add scrollbars if content overflows */
+  }
+
+ 
+ 
+  #fixProblem{
+    text-align: center;
+  }
+
+  #fixTitle{
+    text-align: center;
+  }
