@@ -44,9 +44,7 @@ const models = {
     "D230": ["233", 10]
 }
 
-// aaaaaaaaa
-
-
+let lastThreeRecords = [];
 
 let tempDetails = []
 let tempSerial = {}
@@ -80,10 +78,10 @@ $("#map area").click(function () {
     }
     else {
         // tempDetails[gid] = false
-        console.log('else temp: ',tempDetails[gid]);
-        console.log('else details: ',details[gid]);
+        console.log('else temp: ', tempDetails[gid]);
+        console.log('else details: ', details[gid]);
         var filteredArray = tempDetails.filter(e => e !== details[gid])
-        console.log('filteredArray is: ',filteredArray);
+        console.log('filteredArray is: ', filteredArray);
         tempDetails = filteredArray
 
     }
@@ -98,6 +96,7 @@ $("#Tarakan").click(function () {
     checkModel(($("#serial").val()), models)
     var problem = Object.keys(tempDetails)[0]
     $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + tempDetails[problem][1] + '	' + "Отказ. тараканы")
+    tempDetails = 'Отказ. тараканы'
 });
 
 $("#water").click(function () {
@@ -105,7 +104,7 @@ $("#water").click(function () {
     var problem = Object.keys(tempDetails)[0]
     checkModel(($("#serial").val()), models)
     $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + tempDetails[problem][1] + '	' + "Отказ. попадание жидкости")
-
+    tempDetails = 'Отказ. попадание жидкости'
 });
 
 $("#cpu").click(function () {
@@ -113,6 +112,7 @@ $("#cpu").click(function () {
     var problem = Object.keys(tempDetails)[0]
     checkModel(($("#serial").val()), models)
     $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + tempDetails[problem][1] + '	' + "Отказ. системная плата")
+    tempDetails = 'Отказ. системная плата'
 });
 
 
@@ -166,9 +166,9 @@ checkDetails = () => {
     checkModel();
 
     let serial = document.getElementById("serial");
-        tempSerial = keyboardLayoutSwitch(serial.value)
-        $("#serial").val(tempSerial);
-        checkModel(tempSerial, models)
+    tempSerial = keyboardLayoutSwitch(serial.value)
+    $("#serial").val(tempSerial);
+    checkModel(tempSerial, models)
 
     if (!tempModel[0]) {
 
@@ -190,16 +190,89 @@ $('#copyText2').click(function () {
     $("#titleInput2").select();
     document.execCommand('copy');
 
+    var problem = Object.keys(tempDetails)[0]
+    checkModel(($("#serial").val()), models)
+
+
+    const newData = {
+        model: tempModel,
+        serialNumber: tempSerial,
+        problemList: tempDetails[problem][1],
+        fixList: tempDetails,
+        date: new Date().toLocaleTimeString()
+    };
+
+    storeLastThreeResultsInVariable(newData);
+
+    $('#lastThree').html(createTableFromLastThreeRecords())
+
+    saveToLocalStorage();
     cleanAll();
     checkDetails();
 });
 
+function storeLastThreeResultsInVariable(data) {
+    // Add the new record to the beginning of the array
+    lastThreeRecords.unshift(data);
+
+    // If the array length exceeds 3, remove the oldest record(s)
+    if (lastThreeRecords.length > 2) {
+        lastThreeRecords.pop();
+    }
+}
+function createTableFromLastThreeRecords() {
+    const table = document.createElement('table');
+    // const headerRow = table.insertRow(0);
+    // const headers = ['Model', 'Serial Number', 'Problem List', 'Fix List', 'Date'];
+
+    // Create header cells
+    //   headers.forEach((headerText, index) => {
+    //     const headerCell = document.createElement('th');
+    //     headerCell.textContent = headerText;
+    //     headerRow.appendChild(headerCell);
+    //   });
+
+    // Populate the table with the last 3 records
+    lastThreeRecords.forEach((record) => {
+        const row = table.insertRow(-1);
+        Object.values(record).forEach(value => {
+            const cell = row.insertCell(-1);
+            cell.textContent = value;
+        });
+    });
+
+    return table;
+}
+
+function saveToLocalStorage() {
+    const currentDate = new Date();
+    currentDate.setUTCHours(currentDate.getUTCHours() + 3);
+
+    var problem = Object.keys(tempDetails)[0]
+    checkModel(($("#serial").val()), models)
+
+    const data = {
+        model: tempModel,
+        serialNumber: tempSerial,
+        problemList: tempDetails[problem][1],
+        fixList: tempDetails,
+        date: currentDate.toISOString()
+    };
+
+
+
+    const key = 'resultsData_' + tempSerial; // Use tempSerialNumber in the key
+    localStorage.setItem(key, JSON.stringify(data));
+    console.log('Data saved with key:', key);
+
+}
 
 $('#reset').on('click', () => {
-    
+
     cleanAll();
     checkDetails();
 });
+
 
 const cleanAll = () => {
     document.getElementById("serial").focus();
@@ -225,6 +298,30 @@ const cleanAll = () => {
     dancers.classList.remove("visible");
 }
 
+$('#showStorage').on('click', () => {
+
+    var textarea = $('<textarea>'); // Create a new textarea element
+    $('#lastThree').append(textarea); // Append the textarea to the div
+
+    const dataEntries = Object.entries(localStorage).map(([key, value]) => ({ key, value: JSON.parse(value) }));
+
+    // Sort the data entries by date in descending order
+    dataEntries.sort((a, b) => new Date(b.value.date) - new Date(a.value.date));
+
+    // Populate the table with the sorted data
+    dataEntries.forEach(entry => {
+
+        if (entry.value.date) {
+            const xlsxFormat = entry.value.model + '	' + entry.value.serialNumber + '	' + entry.value.problemList + '	' + entry.value.fixList + '\n'
+            textarea.append(xlsxFormat).attr('rows', '5')   // Set the number of rows to 5
+                .attr('cols', '100');  // Set the number of columns to 50
+        }
+
+        console.log('sorted', entry.value);
+    });
+
+
+});
 
 let SerialNumber = document.getElementById("SerialNumber");
 
@@ -245,7 +342,7 @@ SerialNumber.addEventListener("submit", (e) => {
         $("#serial").val(tempSerial);
         checkModel(tempSerial, models)
 
-        axios.get('http://'+serverEnv.ip+'/search?sn=' + keyboardLayoutSwitch(serial.value))
+        axios.get('http://' + serverEnv.ip + '/search?sn=' + keyboardLayoutSwitch(serial.value))
             .then(response => {
                 // console.log(response);
                 const data = response.data
@@ -271,7 +368,7 @@ SerialNumber.addEventListener("submit", (e) => {
                 $('.form-btn').css('background-color', 'orangered')
             });
 
-            var _table_ = document.createElement('table'),
+        var _table_ = document.createElement('table'),
             _tr_ = document.createElement('tr'),
             _th_ = document.createElement('th'),
             _td_ = document.createElement('td');
@@ -312,7 +409,7 @@ SerialNumber.addEventListener("submit", (e) => {
             table.appendChild(tr);
             return columnSet;
         }
-        
+
     }
 
 });
@@ -334,9 +431,9 @@ const checkModel = (serial, models) => {
                     // tempModel = key
                     // console.log('list   length is ', listSerialLength);
                     // console.log('Serial length is ', serial.length);
-                    if(listSerialLength == serial.length){
+                    if (listSerialLength == serial.length) {
                         tempModel = key
-                    }else{
+                    } else {
                         tempModel = 'ERROR'
                     }
                 }
@@ -345,7 +442,7 @@ const checkModel = (serial, models) => {
     }
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     // your code
     $('#version').text(serverEnv.version)
-    });
+});
