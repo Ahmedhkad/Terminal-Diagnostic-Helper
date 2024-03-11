@@ -1,0 +1,104 @@
+html{
+	/* background: url(https://i.ibb.co/njV5xJS/background.jpg) no-repeat center center fixed;
+  	background-size: cover;
+  	height: 100%; */
+}
+body{
+	/* color: #fff; */
+	font-family: 'Rubik', sans-serif;
+	/* margin:0; */
+    max-width: 1140px;
+	margin: 0 auto;
+}
+ .logo{
+    display: flex;
+    align-items: center;
+ }
+.flex{
+	display:  flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.nav-bar{
+	padding:   3px 10px 0px 20px;
+}
+.nav-bar a{
+	color:  #fff;
+    cursor: pointer;
+}
+.nav-bar .hm{
+	font-size: 20px;
+}
+#m-bar{
+	display: none;
+	font-size: 20px;
+}
+#menu-links ul{
+	margin: 0;
+	padding: 0;
+}
+#menu-links ul li{
+	display: inline-block;
+	margin: 0 35px;
+	list-style-type: none;
+}
+#menu-links a{
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 15px;
+	text-transform: uppercase;
+}
+.nav-btn{
+	padding: 3px 15px;
+	background-color:  #868686;
+	text-decoration: none;
+    color: black;
+	border-radius: 35px;
+}
+.nav-btn:hover{
+	background-color: #6791e0 !important;
+}
+.active{
+	color: #2d6cdf !important;
+}
+#menu-links a:hover{
+	color: #6dabf1 !important;
+}
+@media only screen and (max-width: 900px){
+	#btn{
+		display: none;
+	}
+}
+@media only screen and (max-width: 880px){
+	.nav-bar{
+		display: block;
+		text-align: center;
+		background-color: rgba(0, 0, 0, .4);
+	}
+	#menu-links ul li{
+		display: block;
+		margin: 25px 0;
+	}
+	#btn{
+		display: block;
+	}
+	#m-bar{
+		display: block;
+	}
+	.hidden{
+		display: none !important;
+	}
+	.not-hidden{
+		display: block !important;
+	}
+}
+ 
+.bg-tarakan{
+    display: none;
+    position: absolute;
+    max-width: 1140px;
+    width: -webkit-fill-available;
+}
+.show-tarakan{
+    display: block;
+}

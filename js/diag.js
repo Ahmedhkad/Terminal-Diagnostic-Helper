@@ -2,7 +2,6 @@ let details = {
     usb: ["Восстановление ПО", "Проблеммы с ПО"],
     backcase: ["Замена заднего корпуса", "Корпус МЕХ"],
     keyboard: ["Замена клавиатуры", "Залипает клавиатура"],
-    frontcase: ["Замена переднего корпуса", "Корпус МЕХ"],
     printerroller: ["Замена ролика принтера", "Не печатает"],
     printerchange: ["Замена принтера", "Не печатает"],
     printerclean: ["Очистка принтера", "Не печатает"],
@@ -11,7 +10,7 @@ let details = {
     plonka: ["Снять пленку с экрана", "Экран"],
     screen: ["Замена дисплея", "Экран"],
     newdc: ["Замена разъема зарядки", "Не заряжается"],
-    magreader: ["Замена магнитный ридер", "Зависает"],
+    mag_change: ["Замена магнитный ридер", "Зависает"],
     Tarakan: ["Отказ. тараканы", "TAMPER"],
     water: ["Отказ. попадание жидкости", "TAMPER"],
     changesimreader: ["Перепайка картридера", "не читает карты"],
@@ -26,7 +25,18 @@ let details = {
     key: ["Очистка клавиатуры", "Залипает клавиатура"],
     keyC: ["Очистка платы ктлц", "Залипает клавиатура"],
     boardio: ["Замена нижней платы", "Не печатает"],
-    ctls: ["Замена платы ктлц", "Залипает CTLS"]
+    ctls: ["Замена платы ктлц", "Залипает CTLS"],
+
+    mag_clean: ["Очистка магнитный ридер", "Залит"],
+    frontcase_change: ["Замена переднего корпуса", "Корпус МЕХ"],
+    frontcase_clean: ["Очистка корпуса", "Залит"],
+    bunker: ["Замена бункер", "Кнопки"],
+    charging: ["Восстановление АКБ", "АКБ"],
+    battery_new: ["Замена АКБ", "АКБ"],
+    gprs: ["Замена модуль связи", "Связь"],
+    lens: ["Замена линза", "Линза"],
+    chip: ["обшая работа", "Не прошивается"],
+    off: ["", "Не вкл"],
 }
 
 const models = {
@@ -90,13 +100,14 @@ $("#map area").click(function () {
 });
 
 $("#Tarakan").click(function () {
-    const dancers = document.querySelector('.dancers');
-    dancers.classList.toggle("visible");
+    const dancers = document.querySelector('.bg-tarakan');
+    dancers.classList.toggle("show-tarakan");
+
     $('#titleInput').val(details.Tarakan)
     checkModel(($("#serial").val()), models)
     var problem = Object.keys(tempDetails)[0]
     $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + tempDetails[problem][1] + '	' + "Отказ. тараканы")
-    tempDetails = 'Отказ. тараканы'
+    tempDetails = ['Отказ. тараканы']
 });
 
 $("#water").click(function () {
@@ -104,7 +115,7 @@ $("#water").click(function () {
     var problem = Object.keys(tempDetails)[0]
     checkModel(($("#serial").val()), models)
     $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + tempDetails[problem][1] + '	' + "Отказ. попадание жидкости")
-    tempDetails = 'Отказ. попадание жидкости'
+    tempDetails = ['Отказ. попадание жидкости']
 });
 
 $("#cpu").click(function () {
@@ -112,7 +123,7 @@ $("#cpu").click(function () {
     var problem = Object.keys(tempDetails)[0]
     checkModel(($("#serial").val()), models)
     $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + tempDetails[problem][1] + '	' + "Отказ. системная плата")
-    tempDetails = 'Отказ. системная плата'
+    tempDetails = ['Отказ. системная плата']
 });
 
 
@@ -133,7 +144,7 @@ checkDetails = () => {
     for (const key in tempDetails) {
         if (Object.hasOwnProperty.call(tempDetails, key)) {
             const element = tempDetails[key];
-            if (element) {
+            if (element[0]) {
                 console.log(key + '  -  ' + element[0]);
                 list.push(element[0])
             }
@@ -235,9 +246,11 @@ function createTableFromLastThreeRecords() {
     // Populate the table with the last 3 records
     lastThreeRecords.forEach((record) => {
         const row = table.insertRow(-1);
+        // row.className = 'clickable'
         Object.values(record).forEach(value => {
             const cell = row.insertCell(-1);
             cell.textContent = value;
+            // cell.className = 'clickable';
         });
     });
 
@@ -294,14 +307,16 @@ const cleanAll = () => {
     $('#titleInput2').val('Cleaned!')
     $('#tablePlace').text('')
 
-    const dancers = document.querySelector('.dancers');
-    dancers.classList.remove("visible");
+    const dancers = document.querySelector('.bg-tarakan');
+    dancers.classList.remove("show-tarakan");
+
+    
 }
 
 $('#showStorage').on('click', () => {
 
     var textarea = $('<textarea>'); // Create a new textarea element
-    $('#lastThree').append(textarea); // Append the textarea to the div
+    $('#history').html(textarea); // Append the textarea to the div
 
     const dataEntries = Object.entries(localStorage).map(([key, value]) => ({ key, value: JSON.parse(value) }));
 
@@ -445,4 +460,45 @@ const checkModel = (serial, models) => {
 $(document).ready(function () {
     // your code
     $('#version').text(serverEnv.version)
+
+
+});
+
+
+let toggle = document.getElementById('m-bar')
+
+let holder = document.getElementById('menu-links')
+let btn = document.getElementById('btn')
+
+toggle.addEventListener('click', () => {
+    if (holder.className === "hidden") {
+        holder.className = "not-hidden"
+        btn.className = "not-hidden"
+    } else {
+        holder.className = "hidden"
+        btn.className = "hidden"
+    }
+})
+
+
+let history = document.getElementById('showStorage')
+const historyLable = document.getElementById('history')
+const historybtn = document.getElementById('history-lable')
+const iconSave = '<i class="fa-solid fa-floppy-disk"></i>'
+history.addEventListener('click', () => {
+    if (historyLable.className === "show") {
+        historyLable.className = "not-show"
+        historybtn.innerHTML = iconSave + " Show History"
+        // btn.className = "not-hidden"
+    } else {
+        historyLable.className = "show"
+        historybtn.innerHTML = iconSave + " Hide History"
+
+    }
+})
+
+$(".clickable").click(function () {
+
+    $(this).toggle();
+
 });
