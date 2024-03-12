@@ -140,19 +140,6 @@ $("#conactlessboard").click(function () {
 checkDetails = () => {
     checkModel(($("#serial").val()), models)
 
-    let list = []
-    for (const key in tempDetails) {
-        if (Object.hasOwnProperty.call(tempDetails, key)) {
-            const element = tempDetails[key];
-            if (element[0]) {
-                console.log(key + '  -  ' + element[0]);
-                list.push(element[0])
-            }
-        }
-    }
-    // console.log(list);
-    // var problem = Object.keys(tempDetails)[0] 
-    // console.log('problem is:', problem);
     for (var prop in tempDetails) {
         // object[prop]
         if (tempDetails[prop]) {
@@ -161,11 +148,6 @@ checkDetails = () => {
         }
     }
 
-    var newList = ' '
-    newList = list.join(',').replace(/,/g, ' + ').split();
-    console.log(newList);
-    // var firstProblem = tempDetails[problem][1]
-    // console.log('firstProblem is:' , firstProblem);
     if (!firstProblem) {
         firstProblem = '	'
     }
@@ -185,8 +167,7 @@ checkDetails = () => {
 
         tempModel = 'S90';
     }
-    $('#titleInput').val(newList)
-    $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + firstProblem + '	' + newList)
+    $('#titleInput2').val(tempModel + '	' + tempSerial + '	' + firstProblem + '	' + makePlusList(tempDetails))
 }
 
 
@@ -204,12 +185,11 @@ $('#copyText2').click(function () {
     var problem = Object.keys(tempDetails)[0]
     checkModel(($("#serial").val()), models)
 
-
     const newData = {
         model: tempModel,
         serialNumber: tempSerial,
         problemList: tempDetails[problem][1],
-        fixList: tempDetails,
+        fixList: makePlusList(tempDetails),
         date: new Date().toLocaleTimeString()
     };
 
@@ -221,6 +201,26 @@ $('#copyText2').click(function () {
     cleanAll();
     checkDetails();
 });
+
+const makePlusList = (tempDetails) => {
+    let list = []
+    for (const key in tempDetails) {
+        if (Object.hasOwnProperty.call(tempDetails, key)) {
+            const element = tempDetails[key];
+            if (element[0]) {
+                // console.log(key + '  -  ' + element[0]);
+                list.push(element[0])
+            }
+        }
+    }
+
+    console.log("list: " , list);
+    let newList = ' '
+    newList = list.join(',').replace(/,/g, ' + ').split();
+    console.log("newList: ",newList);
+
+    return newList
+}
 
 function storeLastThreeResultsInVariable(data) {
     // Add the new record to the beginning of the array
@@ -268,7 +268,7 @@ function saveToLocalStorage() {
         model: tempModel,
         serialNumber: tempSerial,
         problemList: tempDetails[problem][1],
-        fixList: tempDetails,
+        fixList: makePlusList(tempDetails),
         date: currentDate.toISOString()
     };
 
