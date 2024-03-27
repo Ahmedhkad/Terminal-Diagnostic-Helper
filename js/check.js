@@ -41,7 +41,7 @@ function check(serialUnchecked) {
         $('#searchText').text(' Sending ... wait')
         $('#buttonGet').css('background-color', 'yellow')
 
-        axios.get('http://'+serverEnv.ip+'/search?sn=' + serial)
+        axios.get('http://'+serverEnv.ip+'/search2?sn=' + serial)
             .then(response => {
                 console.log(response);
                 counter = counter + response.data.length

@@ -357,7 +357,7 @@ SerialNumber.addEventListener("submit", (e) => {
         $("#serial").val(tempSerial);
         checkModel(tempSerial, models)
 
-        axios.get('http://' + serverEnv.ip + '/search?sn=' + keyboardLayoutSwitch(serial.value))
+        axios.get('http://' + serverEnv.ip + '/search2?sn=' + keyboardLayoutSwitch(serial.value))
             .then(response => {
                 // console.log(response);
                 const data = response.data
